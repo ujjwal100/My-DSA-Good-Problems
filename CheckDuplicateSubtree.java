@@ -2,7 +2,7 @@ class Solution {
   /**
   * Problem Link : https://practice.geeksforgeeks.org/problems/duplicate-subtree-in-binary-tree/1#
   * Time Complexity of My solution : O(N)
-  * Space Complexity : O(H)
+  * Space Complexity : O(N)
   * (Google Interview Problem)
   */
     private static class HashedString {
