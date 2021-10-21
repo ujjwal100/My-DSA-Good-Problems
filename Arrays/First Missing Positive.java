@@ -1,5 +1,6 @@
 class Solution {
   // Q (LC - 41): Find MEX of unsorted array (can have multiple repeating instances of a number) in O(N) T, O(1) S
+  // helper video : https://youtu.be/-lfHWWMmXXM
   
     public int firstMissingPositive(int[] nums) {
         int n = nums.length;
