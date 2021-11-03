@@ -14,10 +14,16 @@ class Solution {
       int maxVal = Integer.MIN_VALUE;
     }
     
-  /* 
-   * Helper function to get SubTree Info  
-   */
-  static SubtreeInfo getSubTreeInfo(Node root){
+    public static int largestBst(Node root)
+    {
+        // Write your code here
+        
+        answer = 0;
+        getSubTreeInfo(root);
+        return answer;     
+    }
+    
+    private static SubtreeInfo getSubTreeInfo(Node root){
         if(root == null) {
             return new SubtreeInfo();
         }
@@ -41,15 +47,5 @@ class Solution {
         }
             
         return curr;
-    }
-  
-    static int largestBst(Node root)
-    {
-        // Write your code here
-        
-        answer = 0;
-        getSubTreeInfo(root);
-        return answer;     
-    }
-    
+    }  
 }
