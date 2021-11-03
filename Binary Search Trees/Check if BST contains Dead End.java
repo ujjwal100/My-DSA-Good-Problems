@@ -1,6 +1,6 @@
 class GFG
 {
-  // Problem : <a href="https://practice.geeksforgeeks.org/problems/check-whether-bst-contains-dead-end/1#">Link</a>   
+  // Problem : https://practice.geeksforgeeks.org/problems/check-whether-bst-contains-dead-end/1#   
   // O(N) Time + O(H) Space  
   public static boolean isDeadEnd(Node root)
     {
