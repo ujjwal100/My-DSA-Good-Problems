@@ -3,8 +3,7 @@ class Solution{
     // Problem link : https://practice.geeksforgeeks.org/problems/transform-to-sum-tree/1
   
     public void toSumTree(Node root){
-         //add code here.
-         
+         //add code here. 
          toSumTreeUtil(root);
          }
          
@@ -20,6 +19,5 @@ class Solution{
          root.data = subtreeSum;
          
          return ans;
-     }
-     
+     }     
 }
