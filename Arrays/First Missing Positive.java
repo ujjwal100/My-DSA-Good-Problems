@@ -30,7 +30,7 @@ class Solution {
    * ALTERNATE SOLUTION : Mark Index Negative
    * O(N) Time (3 Iterations) + O(1) Space
    */
-  public int firstMissingPositive(int[] nums) {
+  public int firstMissingPositiveAlternateMethod(int[] nums) {
         int n = nums.length;
         for (int i = 0; i < n; i++) {
             if (nums[i] < 0) {
