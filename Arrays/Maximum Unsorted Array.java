@@ -1,7 +1,7 @@
 public class Solution {
     /**
       * Problem : You are given an array (zero indexed) of N non-negative integers, A0, A1 ,…, AN-1.
-      * Find the minimum sub array Al, Al+1 ,…, Ar so if we sort(in ascending order) that sub array, then the whole array should get sorted.
+      * Find the minimum sub array Al, Al+1 ,…, Ar so that if we sort(in ascending order) that sub array, then the whole array should get sorted.
       *
       * Link : https://www.interviewbit.com/problems/maximum-unsorted-subarray/
       * 
