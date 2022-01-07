@@ -1,34 +1,26 @@
 class Solution {
-    // Problem : https://www.codingninjas.com/codestudio/problems/check-if-preorder-traversal-is-valid_1164410?leftPanelTab=0
-    // O(N) Time + O(H) Space Solution 
-    
+    // Problem : https://practice.geeksforgeeks.org/problems/preorder-traversal-and-bst4006/1/
+    // O(N) Time + O(H) Space
     static int index;
-    
-    public boolean isPreorderValid(int[] preorder) {
-        final int MIN = Integer.MIN_VALUE;
-        final int MAX = Integer.MAX_VALUE;
-        
+    static int canRepresentBST(int arr[], int N) {
+        // code here
         index = 0;
-        
-        return isPreorderValidHelper(preorder, MIN, MAX);
+        return (isCorrectOrder(arr, Integer.MIN_VALUE, Integer.MAX_VALUE) ? 1 : 0);
     }
     
-    private boolean isPreorderValidHelper(int[] preorder, int lower, int upper) {
+    static boolean isCorrectOrder(int[] preorder, int low, int high) {
         if (index >= preorder.length) {
             return true;
         }
         
-        int root = preorder[index];
-        
-        if (root < lower || root > upper) {
+        if (preorder[index] >= low && preorder[index] <= high) {
+            int root = preorder[index++];
+            return isCorrectOrder(preorder, low, root - 1) && isCorrectOrder(preorder, root + 1, high);
+            
+        } else if (preorder[index] < low) {
             return false;
+        } else {
+            return true;
         }
-        
-        index++;
-        
-        isPreorderValidHelper(preorder, lower, root - 1);
-        
-        return isPreorderValidHelper(preorder, root + 1, upper);
-        
     }
 }
