@@ -1,57 +1,52 @@
+// Problem : https://www.interviewbit.com/problems/rotate-matrix/
+// Observation : total shift i + j = dim - 1
+// Observation : ORDER:  [j++,i++] -> [i++,j--] -> [j--,i--] -> [i--,j++]
+// O(N^2) Time O(1) space
 public class Solution {
-  // Problem : https://www.interviewbit.com/problems/rotate-matrix/
-  // O(N*N) Time + O(1) Space
 	public void rotate(ArrayList<ArrayList<Integer>> a) {
-        int n = a.size();
-        int step = n - 1;
-        int iStart = 0, jStart = 0;
-        int i, j;
+        int dimension = a.size();
+        int startRowCol = 0;
+        int endRowCol = a.size() - 1;
 
-        int curr, next;
+        while (dimension > 0) {
+            int i = startRowCol, j = startRowCol;
 
-        while (step > 0) {
-            i = iStart;
-            j = jStart;
+            int counter = 1;
+            while (counter++ < dimension) {
+                
+                int curr = a.get(i).get(j);
 
-            for (int count = 0; count < step; count++, j++) {
-                curr = a.get(i).get(j);
+                i += (dimension - 1) - (endRowCol - j); // total shift = dim - 1
+                j = endRowCol;
 
-                j = j + (step - count);
-                i = i + count;
+                int next = a.get(i).get(j);
+                a.get(i).set(j, curr);
+                curr = next;
+
+                j -= (dimension - 1) - (endRowCol - i);
+                i = endRowCol;
 
                 next = a.get(i).get(j);
                 a.get(i).set(j, curr);
                 curr = next;
 
-
-                i = i + (step - count);
-                j = j - count; 
-
-                next = a.get(i).get(j);
-                a.get(i).set(j, curr);
-                curr = next;
-
-
-                j = j - (step - count);
-                i = i - count;
+                i -= (dimension - 1) - (j - startRowCol);
+                j = startRowCol;
 
                 next = a.get(i).get(j);
                 a.get(i).set(j, curr);
                 curr = next;
 
-
-                i = i - (step - count);
-                j = j + count;
-
-                next = a.get(i).get(j);
+                j += (dimension - 1) - (i - startRowCol);
+                i = startRowCol;
+                
                 a.get(i).set(j, curr);
-                curr = next;
-
+                j++;
             }
 
-            step -= 2;
-            iStart++;
-            jStart++;
+            startRowCol++;
+            endRowCol--;
+            dimension -= 2;
         }
 	}
 }
