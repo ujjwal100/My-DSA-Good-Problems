@@ -1,53 +1,37 @@
-public class Solution {    
-    // Problem Link : https://www.codingninjas.com/codestudio/problems/kth-ancestor-of-a-node-in-binary-tree_842561
-    // Time : O(N)
-    // Space : O(H), NO AUXILIARY DATA STRUCTURE USED (Like array etc.)
-    
-    static class AncestorLevel {
-        int level;
-        AncestorLevel(int a) {
-            level = a;
-        }
-    }
-    
+
+// Problem Link : https://www.codingninjas.com/codestudio/problems/kth-ancestor-of-a-node-in-binary-tree_842561
+// O(N) Time O(H) Space
+//
+// Algo :
+// getHeightFromTargetNode() -> x -> if x = 0 if node not found
+// x = 1 if node = targetNode 
+// x = Math.max(left , right) -> if x == k, mark root.val as answer else if x != 0 -> return x+1 else return 0
+public class Solution {
+    static int answer;
     static int findKthAncestor(BinaryTreeNode<Integer> root, int targetNodeVal, int kth) {
         // Write your code here.
-        BinaryTreeNode<Integer> ancestor = findKthAncestorUtil(root, targetNodeVal, kth, new AncestorLevel(0));
-        return (ancestor == null? -1 : ancestor.data);
+        answer = -1;
+        getHeightFromTargetNode(root, targetNodeVal, kth);
+        return answer;
     }
-    
-    static BinaryTreeNode<Integer> findKthAncestorUtil(BinaryTreeNode<Integer> root, int targetNodeVal, int kth, AncestorLevel ans) {
-        if (root == null) {
-             return root;
-        }
-        if (root.data == targetNodeVal) {
-            ans.level++;
-            return null;
-        }
-        BinaryTreeNode<Integer> leftAns = findKthAncestorUtil(root.left, targetNodeVal, kth, ans);
-        if (leftAns != null) {
-            return leftAns;
-        } else if (ans.level > 0) {
-            if (ans.level == kth) {
-                return root;
+    static int getHeightFromTargetNode(BinaryTreeNode<Integer> root, int targetNodeVal, int kth) {
+        if (root!= null) {
+            if (root.data == targetNodeVal) {
+                return 1;
             } else {
-                ans.level++;
-                return null;
+                int heightFromTarget = Math.max(getHeightFromTargetNode(root.left, targetNodeVal, kth), getHeightFromTargetNode(root.right, targetNodeVal, kth));
+                
+                if (heightFromTarget > 0) {
+                    if (heightFromTarget == kth) {
+                    	answer = root.data;
+                	} 
+                    return heightFromTarget + 1;
+                } else {
+                    return 0;
+                }
             }
         } else {
-            BinaryTreeNode<Integer> rightAns = findKthAncestorUtil(root.right, targetNodeVal, kth, ans);
-            if (rightAns != null) {
-                return rightAns;
-            } else if (ans.level > 0) {
-                if (ans.level == kth) {
-                    return root;
-                } else {
-                    ans.level++;
-                    return null;
-                }
-        	} else {
-                return null;
-            }
+            return 0;
         }
     }
-}
+}   
