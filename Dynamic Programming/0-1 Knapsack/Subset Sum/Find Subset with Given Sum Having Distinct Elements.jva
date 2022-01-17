@@ -1,0 +1,16 @@
+// Q -> count subsets with subset-sum = S // distinct elements
+// [1 2 3] -> for S = 3 -> [1 2] [3] 
+//
+// O(n*S) time & Space for DP
+class Solution {
+  int getCount(int S, int n) {
+    if (S==0) return 1;
+    if (n == 0) return 0;
+
+    if (S >= array[n -1]) {
+      return getCount(S - array[n - 1], n -1) + getCount(S, n - 1);
+    } else {
+      return getCount(S, n - 1);
+    }
+  }
+}
