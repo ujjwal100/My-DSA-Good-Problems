@@ -32,7 +32,8 @@ class Solution {
             }
         }
         
-        cycles /= 2;
+        // We get 2x the number of cycles present, as 2 nodes in a cycle report true for condition : visited adjacent != parent in DFS func
+        cycles /= 2; 
         
         if (cycles >= components - 1) {
             return components - 1;
