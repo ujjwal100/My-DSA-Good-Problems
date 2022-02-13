@@ -33,8 +33,8 @@ public class Solution {
             Arrays.fill(vector, null);
         }
 
-
         getMinCost(0, n - 1, cutPoints, dp);
+
         ArrayList<Integer> answer = new ArrayList<>();
 
         getOrder(0, n - 1, cutPoints, dp, answer);
@@ -58,20 +58,13 @@ public class Solution {
                 Cost leftCost = getMinCost(start, i, cutPoints, dp);
                 Cost rightCost = getMinCost(i, end, cutPoints, dp);
                 long cost = leftCost.cost + rightCost.cost + cutPoints.get(end) - cutPoints.get(start);
-                minCost = Math.min(minCost, cost);
-                costs.add(new Cost(cost, i));
+                if (cost < minCost) {
+                    minCost = cost;
+                    answer = new Cost(cost, i);
+                }
         }
 
-        for (Cost cost : costs) {
-            if (cost.cost == minCost) {
-                answer = cost;
-                break;
-            }
-        }
-
-        dp[start][end] = answer;
-
-        return answer;
+        return dp[start][end] = answer;
     }
 
     private void getOrder( int start, int end, ArrayList<Integer> cutPoints, Cost[][] dp, ArrayList<Integer> order) {
