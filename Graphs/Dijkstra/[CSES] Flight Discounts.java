@@ -71,18 +71,12 @@ public class Solution {
 					pq.add(new Node(adj.b, 1));
 					}
 
-					// dont use discount
-					if (cost[adj.b][0] > cost[par][0] + adj.a) {
-					cost[adj.b][0] = cost[par][0] + adj.a;
-					pq.add(new Node(adj.b, 0));
-					}
-
-				} else {
-					// dont use discount
-					if (cost[adj.b][1] > cost[par][1] + adj.a) {
-					cost[adj.b][1] = cost[par][1] + adj.a;
-					pq.add(new Node(adj.b, 1));
-					}
+				} 
+				// dont use discount
+				if (cost[adj.b][1] > cost[par][p.used] + adj.a) {
+				cost[adj.b][1] = cost[par][p.used] + adj.a;
+				pq.add(new Node(adj.b, 1));
+				
 				}
 				
 			}
