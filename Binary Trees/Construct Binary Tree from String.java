@@ -1,5 +1,5 @@
 // LC Premium Fb 
-// Problem : https://github.com/ujjwal100/My-DSA-Good-Problems/blob/main/LC%20Premium/Construct%20Binary%20Tree%20from%20String%20-%20LeetCode.pdf
+// Problem : https://github.com/ujjwal100/LC-Premium/blob/main/Construct%20Binary%20Tree%20from%20String%20-%20LeetCode.pdf
 // O(N * L) time + O(H) Space
 // N -> No. of Nodes L -> Len of String
 class Solution {
