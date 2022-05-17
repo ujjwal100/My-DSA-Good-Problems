@@ -1,3 +1,7 @@
+/*
+TC : O(logN)
+SC : O(1)
+*/
 class Solution {
     public int missingElement(int[] nums, int k) {
         int l = 0, h = nums.length - 1, n = nums.length;
