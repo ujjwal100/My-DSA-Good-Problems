@@ -9,6 +9,9 @@ class Solution {
         int ans = Integer.MIN_VALUE;
         int dp[][] = new int[nums.length][2];
         
+        // dp[i][0] -> means running subarray sum from {0..i} index where no index has been taken as nums[k] * nums[k]
+        // dp[i][1] -> means running subarray sum from {0..i} index where exactly one index in {0..i} has been taken as nums[k] * nums[k]
+        
         dp[0][0] = nums[0];
         dp[0][1] = nums[0] * nums[0];
         ans = Math.max(ans, Math.max(dp[0][0], dp[0][1]));
