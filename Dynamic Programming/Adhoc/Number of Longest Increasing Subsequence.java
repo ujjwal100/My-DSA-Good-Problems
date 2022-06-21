@@ -1,7 +1,7 @@
 /*
 Q : https://leetcode.com/problems/number-of-longest-increasing-subsequence/
 TC : O(N^2)
-SC : O(N^2)
+SC : O(N)
 */
 class Solution {
     public int findNumberOfLIS(int[] nums) {
