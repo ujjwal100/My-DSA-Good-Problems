@@ -1,3 +1,9 @@
+/*
+Q : https://leetcode.com/problems/longest-string-chain/
+TC : O(N*L*L), L -> length of each word, N is length of words[]
+SC : O(N)
+
+*/
 class Solution {
     public int longestStrChain(String[] words) {
         HashSet<String> wordSet = new HashSet<>();
@@ -23,7 +29,6 @@ class Solution {
             ans = Math.max(ans, 1 + getLongestStrChain(next, wordSet, dp));
             }
         }
-        
         
         dp.put(word, ans);
         return ans;
